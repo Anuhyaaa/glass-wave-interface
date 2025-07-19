@@ -10,10 +10,11 @@ interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
   technician: {
+    id: string;
     name: string;
-    avatar: string;
+    avatar_url: string | null;
     rating: number;
-    hourlyRate: number;
+    hourly_rate: number;
     specialties: string[];
   };
 }
@@ -57,13 +58,13 @@ const BookingModal = ({ isOpen, onClose, technician }: BookingModalProps) => {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
             <img
-              src={technician.avatar}
+              src={technician.avatar_url || "/placeholder.svg"}
               alt={technician.name}
               className="w-12 h-12 rounded-xl object-cover"
             />
             <div>
               <h2 className="text-xl font-bold">Book {technician.name}</h2>
-              <p className="text-muted-foreground">${technician.hourlyRate}/hour</p>
+              <p className="text-muted-foreground">${technician.hourly_rate}/hour</p>
             </div>
           </div>
           <Button variant="ghost" size="sm" onClick={onClose}>
@@ -197,7 +198,7 @@ const BookingModal = ({ isOpen, onClose, technician }: BookingModalProps) => {
             <h3 className="font-semibold mb-2">Estimated Cost</h3>
             <div className="flex justify-between items-center">
               <span>Hourly Rate:</span>
-              <span className="font-bold">${technician.hourlyRate}/hour</span>
+              <span className="font-bold">${technician.hourly_rate}/hour</span>
             </div>
             <div className="flex justify-between items-center text-sm text-muted-foreground">
               <span>Service Call Fee:</span>
@@ -206,7 +207,7 @@ const BookingModal = ({ isOpen, onClose, technician }: BookingModalProps) => {
             <hr className="my-2 border-border" />
             <div className="flex justify-between items-center font-bold">
               <span>Minimum Charge:</span>
-              <span className="gradient-text">${technician.hourlyRate + 25}</span>
+              <span className="gradient-text">${technician.hourly_rate + 25}</span>
             </div>
           </div>
 

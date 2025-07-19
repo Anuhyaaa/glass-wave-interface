@@ -6,21 +6,20 @@ interface TechnicianCardProps {
   technician: {
     id: string;
     name: string;
-    avatar: string;
+    avatar_url: string | null;
     rating: number;
     reviewCount: number;
     specialties: string[];
     location: string;
-    distance: string;
-    hourlyRate: number;
-    isVerified: boolean;
-    responseTime: string;
-    availability: string;
-    completedJobs: number;
+    hourly_rate: number;
+    is_verified: boolean;
+    response_time: string;
+    completed_jobs: number;
   };
+  onBookNow?: (technicianId: string) => void;
 }
 
-const TechnicianCard = ({ technician }: TechnicianCardProps) => {
+const TechnicianCard = ({ technician, onBookNow }: TechnicianCardProps) => {
   return (
     <div className="glass-card rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 group">
       {/* Header */}
@@ -28,11 +27,11 @@ const TechnicianCard = ({ technician }: TechnicianCardProps) => {
         <div className="flex items-center space-x-3">
           <div className="relative">
             <img
-              src={technician.avatar}
+              src={technician.avatar_url || "/placeholder.svg"}
               alt={technician.name}
               className="w-12 h-12 rounded-xl object-cover"
             />
-            {technician.isVerified && (
+            {technician.is_verified && (
               <CheckCircle className="absolute -bottom-1 -right-1 h-5 w-5 text-green-500 bg-background rounded-full" />
             )}
           </div>
@@ -42,7 +41,7 @@ const TechnicianCard = ({ technician }: TechnicianCardProps) => {
             </h3>
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <MapPin className="h-4 w-4" />
-              <span>{technician.location} • {technician.distance}</span>
+              <span>{technician.location} • 2.5 miles</span>
             </div>
           </div>
         </div>
@@ -73,11 +72,11 @@ const TechnicianCard = ({ technician }: TechnicianCardProps) => {
       <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
         <div className="flex items-center space-x-2">
           <Clock className="h-4 w-4 text-muted-foreground" />
-          <span className="text-muted-foreground">Response: {technician.responseTime}</span>
+          <span className="text-muted-foreground">Response: {technician.response_time}</span>
         </div>
         <div className="flex items-center space-x-2">
           <CheckCircle className="h-4 w-4 text-green-500" />
-          <span className="text-muted-foreground">{technician.completedJobs} jobs done</span>
+          <span className="text-muted-foreground">{technician.completed_jobs} jobs done</span>
         </div>
       </div>
 
@@ -85,10 +84,10 @@ const TechnicianCard = ({ technician }: TechnicianCardProps) => {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-sm font-medium text-green-500">{technician.availability}</span>
+          <span className="text-sm font-medium text-green-500">Available Now</span>
         </div>
         <div className="text-right">
-          <span className="text-2xl font-bold gradient-text">${technician.hourlyRate}</span>
+          <span className="text-2xl font-bold gradient-text">${technician.hourly_rate}</span>
           <span className="text-sm text-muted-foreground">/hour</span>
         </div>
       </div>
@@ -99,7 +98,10 @@ const TechnicianCard = ({ technician }: TechnicianCardProps) => {
           <Calendar className="h-4 w-4 mr-2" />
           View Profile
         </Button>
-        <Button className="flex-1 bg-gradient-primary hover:scale-105 transition-transform">
+        <Button 
+          onClick={() => onBookNow?.(technician.id)}
+          className="flex-1 bg-gradient-primary hover:scale-105 transition-transform"
+        >
           Book Now
         </Button>
       </div>
