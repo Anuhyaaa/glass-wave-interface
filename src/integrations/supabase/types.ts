@@ -14,7 +14,255 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          booking_date: string
+          booking_time: string
+          created_at: string | null
+          customer_address: string
+          customer_name: string
+          customer_phone: string
+          description: string
+          id: string
+          service_category_id: string | null
+          service_type: string
+          status: string | null
+          technician_id: string | null
+          total_amount: number | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          booking_date: string
+          booking_time: string
+          created_at?: string | null
+          customer_address: string
+          customer_name: string
+          customer_phone: string
+          description: string
+          id?: string
+          service_category_id?: string | null
+          service_type: string
+          status?: string | null
+          technician_id?: string | null
+          total_amount?: number | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          booking_date?: string
+          booking_time?: string
+          created_at?: string | null
+          customer_address?: string
+          customer_name?: string
+          customer_phone?: string
+          description?: string
+          id?: string
+          service_category_id?: string | null
+          service_type?: string
+          status?: string | null
+          technician_id?: string | null
+          total_amount?: number | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_service_category_id_fkey"
+            columns: ["service_category_id"]
+            isOneToOne: false
+            referencedRelation: "service_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_technician_id_fkey"
+            columns: ["technician_id"]
+            isOneToOne: false
+            referencedRelation: "technicians"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          created_at: string | null
+          id: string
+          name: string | null
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string | null
+          id: string
+          name?: string | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          address?: string | null
+          created_at?: string | null
+          id?: string
+          name?: string | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          booking_id: string | null
+          comment: string | null
+          created_at: string | null
+          id: string
+          rating: number
+          technician_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          booking_id?: string | null
+          comment?: string | null
+          created_at?: string | null
+          id?: string
+          rating: number
+          technician_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          booking_id?: string | null
+          comment?: string | null
+          created_at?: string | null
+          id?: string
+          rating?: number
+          technician_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "reviews_technician_id_fkey"
+            columns: ["technician_id"]
+            isOneToOne: false
+            referencedRelation: "technicians"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      service_categories: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          icon: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          icon: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      technician_specialties: {
+        Row: {
+          category_id: string | null
+          id: string
+          technician_id: string | null
+        }
+        Insert: {
+          category_id?: string | null
+          id?: string
+          technician_id?: string | null
+        }
+        Update: {
+          category_id?: string | null
+          id?: string
+          technician_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "technician_specialties_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "service_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "technician_specialties_technician_id_fkey"
+            columns: ["technician_id"]
+            isOneToOne: false
+            referencedRelation: "technicians"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      technicians: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          completed_jobs: number | null
+          created_at: string | null
+          email: string
+          hourly_rate: number
+          id: string
+          is_available: boolean | null
+          is_verified: boolean | null
+          location: string
+          name: string
+          phone: string | null
+          response_time: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          completed_jobs?: number | null
+          created_at?: string | null
+          email: string
+          hourly_rate: number
+          id?: string
+          is_available?: boolean | null
+          is_verified?: boolean | null
+          location: string
+          name: string
+          phone?: string | null
+          response_time?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          completed_jobs?: number | null
+          created_at?: string | null
+          email?: string
+          hourly_rate?: number
+          id?: string
+          is_available?: boolean | null
+          is_verified?: boolean | null
+          location?: string
+          name?: string
+          phone?: string | null
+          response_time?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
