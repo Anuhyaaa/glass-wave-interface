@@ -22,52 +22,52 @@ const HeroSection = () => {
         </p>
 
         {/* Search CTA */}
-        <div className="glass-card rounded-xl p-6 max-w-2xl mx-auto mb-8">
+        <div className="glass-card-intense rounded-2xl p-8 max-w-2xl mx-auto mb-8 shimmer">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 placeholder="What do you need help with?"
-                className="pl-10 h-12 bg-muted/30 border-0"
+                className="pl-12 h-14 bg-glass-bg border border-glass-border rounded-xl backdrop-blur-md text-foreground placeholder:text-muted-foreground"
               />
             </div>
             <div className="flex-1 relative">
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 placeholder="Enter your location"
-                className="pl-10 h-12 bg-muted/30 border-0"
+                className="pl-12 h-14 bg-glass-bg border border-glass-border rounded-xl backdrop-blur-md text-foreground placeholder:text-muted-foreground"
               />
             </div>
-            <Button size="lg" className="h-12 px-8 bg-gradient-primary hover:scale-105 transition-transform">
+            <Button variant="premium" size="lg" className="h-14 px-10 rounded-xl font-bold text-base">
               Search Technicians
             </Button>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <div className="glass-card rounded-lg p-6 hover:scale-105 transition-transform">
-            <div className="flex items-center justify-center w-12 h-12 bg-gradient-primary rounded-lg mx-auto mb-4">
-              <Wrench className="h-6 w-6 text-primary-foreground" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500 shimmer group">
+            <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Wrench className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h3 className="text-2xl font-bold gradient-text">500+</h3>
-            <p className="text-muted-foreground">Verified Technicians</p>
+            <h3 className="text-3xl font-bold gradient-text mb-2">500+</h3>
+            <p className="text-muted-foreground font-medium">Verified Technicians</p>
           </div>
           
-          <div className="glass-card rounded-lg p-6 hover:scale-105 transition-transform">
-            <div className="flex items-center justify-center w-12 h-12 bg-gradient-secondary rounded-lg mx-auto mb-4">
-              <Star className="h-6 w-6 text-secondary-foreground" />
+          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500 shimmer group">
+            <div className="flex items-center justify-center w-16 h-16 bg-gradient-secondary rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Star className="h-8 w-8 text-secondary-foreground" />
             </div>
-            <h3 className="text-2xl font-bold gradient-text">4.9</h3>
-            <p className="text-muted-foreground">Average Rating</p>
+            <h3 className="text-3xl font-bold gradient-text mb-2">4.9</h3>
+            <p className="text-muted-foreground font-medium">Average Rating</p>
           </div>
           
-          <div className="glass-card rounded-lg p-6 hover:scale-105 transition-transform">
-            <div className="flex items-center justify-center w-12 h-12 bg-gradient-primary rounded-lg mx-auto mb-4">
-              <MapPin className="h-6 w-6 text-primary-foreground" />
+          <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-500 shimmer group">
+            <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <MapPin className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h3 className="text-2xl font-bold gradient-text">50+</h3>
-            <p className="text-muted-foreground">Cities Covered</p>
+            <h3 className="text-3xl font-bold gradient-text mb-2">50+</h3>
+            <p className="text-muted-foreground font-medium">Cities Covered</p>
           </div>
         </div>
       </div>

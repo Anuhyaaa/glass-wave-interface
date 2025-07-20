@@ -120,10 +120,10 @@ const TechnicianList = () => {
           {/* Filters */}
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-48 glass-card border-0">
+              <SelectTrigger className="w-48 glass-card-soft border-0 rounded-xl h-11">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent className="glass-card border-0">
+              <SelectContent className="glass-card-intense border border-glass-border rounded-xl backdrop-blur-xl">
                 <SelectItem value="distance">Distance</SelectItem>
                 <SelectItem value="rating">Highest Rated</SelectItem>
                 <SelectItem value="price-low">Price: Low to High</SelectItem>
@@ -133,10 +133,10 @@ const TechnicianList = () => {
             </Select>
 
             <Select value={filterBy} onValueChange={setFilterBy}>
-              <SelectTrigger className="w-48 glass-card border-0">
+              <SelectTrigger className="w-48 glass-card-soft border-0 rounded-xl h-11">
                 <SelectValue placeholder="Filter" />
               </SelectTrigger>
-              <SelectContent className="glass-card border-0">
+              <SelectContent className="glass-card-intense border border-glass-border rounded-xl backdrop-blur-xl">
                 <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="computer">Computer Repair</SelectItem>
                 <SelectItem value="home">Home Appliances</SelectItem>
@@ -145,7 +145,7 @@ const TechnicianList = () => {
               </SelectContent>
             </Select>
 
-            <Button variant="outline" size="sm" className="glass-card border-0">
+            <Button variant="glass" size="sm" className="rounded-xl h-11 w-11 p-0">
               <SlidersHorizontal className="h-4 w-4" />
             </Button>
           </div>
@@ -177,8 +177,8 @@ const TechnicianList = () => {
         )}
 
         {/* Load More */}
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="glass-card border-0 hover:bg-primary/10">
+        <div className="text-center mt-16">
+          <Button variant="glass" size="lg" className="px-12 rounded-xl font-semibold">
             Load More Technicians
           </Button>
         </div>

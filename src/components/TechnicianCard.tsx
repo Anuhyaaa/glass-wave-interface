@@ -21,7 +21,7 @@ interface TechnicianCardProps {
 
 const TechnicianCard = ({ technician, onBookNow }: TechnicianCardProps) => {
   return (
-    <div className="glass-card rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 group">
+    <div className="glass-card rounded-xl p-6 hover:scale-[1.02] transition-all duration-300 group shimmer overflow-hidden">
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
@@ -93,14 +93,16 @@ const TechnicianCard = ({ technician, onBookNow }: TechnicianCardProps) => {
       </div>
 
       {/* Actions */}
-      <div className="flex space-x-2">
-        <Button variant="outline" className="flex-1 border-primary/20 hover:bg-primary/10">
+      <div className="flex space-x-3">
+        <Button variant="glass" size="sm" className="flex-1">
           <Calendar className="h-4 w-4 mr-2" />
           View Profile
         </Button>
         <Button 
           onClick={() => onBookNow?.(technician.id)}
-          className="flex-1 bg-gradient-primary hover:scale-105 transition-transform"
+          variant="premium"
+          size="sm"
+          className="flex-1"
         >
           Book Now
         </Button>

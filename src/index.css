@@ -35,16 +35,21 @@
     --input: 240 10% 15%;
     --ring: 200 100% 60%;
 
-    /* Glassmorphic gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(200 100% 60% / 0.8), hsl(280 80% 65% / 0.8));
-    --gradient-secondary: linear-gradient(135deg, hsl(320 90% 70% / 0.6), hsl(200 100% 60% / 0.6));
-    --gradient-glass: linear-gradient(135deg, hsl(240 10% 15% / 0.4), hsl(240 10% 20% / 0.1));
-    --gradient-hero: linear-gradient(135deg, hsl(240 10% 8%), hsl(200 20% 15%), hsl(280 15% 12%));
+  /* Enhanced glassmorphic gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(200 100% 60% / 0.9), hsl(280 80% 65% / 0.8));
+  --gradient-secondary: linear-gradient(135deg, hsl(320 90% 70% / 0.7), hsl(200 100% 60% / 0.6));
+  --gradient-glass: linear-gradient(135deg, hsl(240 10% 15% / 0.5), hsl(240 10% 20% / 0.2));
+  --gradient-hero: linear-gradient(135deg, hsl(240 10% 8%), hsl(200 20% 15%), hsl(280 15% 12%));
+  --gradient-glass-intense: linear-gradient(135deg, hsl(240 10% 15% / 0.8), hsl(240 10% 20% / 0.4));
+  --gradient-accent: linear-gradient(135deg, hsl(320 90% 70% / 0.3), hsl(200 100% 60% / 0.2));
 
-    /* Glass effect backgrounds */
-    --glass-bg: hsl(240 10% 15% / 0.3);
-    --glass-border: hsl(0 0% 100% / 0.1);
-    --glass-shadow: 0 8px 32px hsl(240 10% 5% / 0.4);
+  /* Enhanced glass effect backgrounds */
+  --glass-bg: hsl(240 10% 15% / 0.4);
+  --glass-bg-intense: hsl(240 10% 15% / 0.6);
+  --glass-border: hsl(0 0% 100% / 0.15);
+  --glass-border-soft: hsl(0 0% 100% / 0.08);
+  --glass-shadow: 0 8px 32px hsl(240 10% 5% / 0.5);
+  --glass-shadow-hover: 0 12px 40px hsl(240 10% 5% / 0.6);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -121,18 +126,53 @@
 }
 
 @layer components {
-  /* Glassmorphic card component */
+  /* Enhanced glassmorphic card component */
   .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.2), transparent);
   }
 
   .glass-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px hsl(240 10% 5% / 0.5);
+    transform: translateY(-3px);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: var(--glass-border);
+    background: var(--glass-bg-intense);
+  }
+
+  /* Intense glass variant */
+  .glass-card-intense {
+    background: var(--glass-bg-intense);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-hover);
+    transition: var(--transition-smooth);
+  }
+
+  /* Soft glass variant */
+  .glass-card-soft {
+    background: hsl(240 10% 15% / 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border-soft);
+    box-shadow: 0 4px 16px hsl(240 10% 5% / 0.3);
+    transition: var(--transition-smooth);
   }
 
   /* Gradient text */
@@ -154,13 +194,71 @@
     66% { transform: translateY(5px) rotate(-1deg); }
   }
 
-  /* Pulse glow effect */
+  /* Enhanced pulse glow effect */
   .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite alternate;
+    animation: pulseGlow 3s ease-in-out infinite alternate;
   }
 
   @keyframes pulseGlow {
-    from { box-shadow: 0 0 20px hsl(200 100% 60% / 0.4); }
-    to { box-shadow: 0 0 30px hsl(280 80% 65% / 0.6); }
+    from { 
+      box-shadow: 0 0 20px hsl(200 100% 60% / 0.4), 0 0 40px hsl(200 100% 60% / 0.2); 
+    }
+    to { 
+      box-shadow: 0 0 30px hsl(280 80% 65% / 0.6), 0 0 60px hsl(280 80% 65% / 0.3); 
+    }
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.1),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Elegant button hover */
+  .elegant-hover {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .elegant-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .elegant-hover:hover::before {
+    left: 100%;
   }
 }
