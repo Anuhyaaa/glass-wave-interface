@@ -81,107 +81,117 @@ const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="glass-card border-0 max-w-md">
-        <DialogHeader>
-          <DialogTitle className="text-center text-2xl font-bold gradient-text">
-            Welcome to TechFinder
-          </DialogTitle>
-        </DialogHeader>
+      <DialogContent className="glass-card-intense border border-glass-border max-w-md mx-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 p-0 overflow-hidden">
+        <div className="p-6">
+          <DialogHeader className="mb-6">
+            <DialogTitle className="text-center text-2xl font-bold gradient-text">
+              Welcome to TechFinder
+            </DialogTitle>
+          </DialogHeader>
 
-        <Tabs defaultValue="signin" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 glass-card border-0">
-            <TabsTrigger value="signin" className="text-white data-[state=active]:bg-primary/20">
-              Sign In
-            </TabsTrigger>
-            <TabsTrigger value="signup" className="text-white data-[state=active]:bg-primary/20">
-              Sign Up
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="signin" className="space-y-4">
-            <form onSubmit={handleSignIn} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-white">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="glass-card border-0 text-white placeholder:text-white/60"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-white">Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="glass-card border-0 text-white placeholder:text-white/60"
-                  placeholder="Enter your password"
-                />
-              </div>
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-primary hover:bg-primary/90"
+          <Tabs defaultValue="signin" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 glass-card-soft border-0 mb-6 h-12">
+              <TabsTrigger 
+                value="signin" 
+                className="text-foreground data-[state=active]:bg-primary/20 data-[state=active]:text-primary-foreground rounded-lg transition-all duration-300"
               >
-                {isLoading ? "Signing in..." : "Sign In"}
-              </Button>
-            </form>
-          </TabsContent>
-
-          <TabsContent value="signup" className="space-y-4">
-            <form onSubmit={handleSignUp} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-white">Full Name</Label>
-                <Input
-                  id="name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="glass-card border-0 text-white placeholder:text-white/60"
-                  placeholder="Enter your full name"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="signup-email" className="text-white">Email</Label>
-                <Input
-                  id="signup-email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="glass-card border-0 text-white placeholder:text-white/60"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="signup-password" className="text-white">Password</Label>
-                <Input
-                  id="signup-password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="glass-card border-0 text-white placeholder:text-white/60"
-                  placeholder="Create a password"
-                />
-              </div>
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-primary hover:bg-primary/90"
+                Sign In
+              </TabsTrigger>
+              <TabsTrigger 
+                value="signup" 
+                className="text-foreground data-[state=active]:bg-primary/20 data-[state=active]:text-primary-foreground rounded-lg transition-all duration-300"
               >
-                {isLoading ? "Creating account..." : "Sign Up"}
-              </Button>
-            </form>
-          </TabsContent>
-        </Tabs>
+                Sign Up
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="signin" className="space-y-6 mt-0">
+              <form onSubmit={handleSignIn} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-foreground font-medium">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="h-12 bg-transparent border border-white/20 rounded-xl text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-foreground font-medium">Password</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="h-12 bg-transparent border border-white/20 rounded-xl text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
+                    placeholder="Enter your password"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  variant="premium"
+                  className="w-full h-12 rounded-xl font-semibold mt-6"
+                >
+                  {isLoading ? "Signing in..." : "Sign In"}
+                </Button>
+              </form>
+            </TabsContent>
+
+            <TabsContent value="signup" className="space-y-6 mt-0">
+              <form onSubmit={handleSignUp} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-foreground font-medium">Full Name</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    className="h-12 bg-transparent border border-white/20 rounded-xl text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="signup-email" className="text-foreground font-medium">Email</Label>
+                  <Input
+                    id="signup-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="h-12 bg-transparent border border-white/20 rounded-xl text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
+                    placeholder="Enter your email"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="signup-password" className="text-foreground font-medium">Password</Label>
+                  <Input
+                    id="signup-password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="h-12 bg-transparent border border-white/20 rounded-xl text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
+                    placeholder="Create a password"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  variant="premium"
+                  className="w-full h-12 rounded-xl font-semibold mt-6"
+                >
+                  {isLoading ? "Creating account..." : "Sign Up"}
+                </Button>
+              </form>
+            </TabsContent>
+          </Tabs>
+        </div>
       </DialogContent>
     </Dialog>
   );
