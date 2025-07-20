@@ -25,17 +25,17 @@ const HeroSection = () => {
         <div className="glass-card-intense rounded-2xl p-8 max-w-2xl mx-auto mb-8 shimmer">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
               <Input
                 placeholder="What do you need help with?"
-                className="pl-12 h-14 bg-glass-bg border border-glass-border rounded-xl backdrop-blur-md text-foreground placeholder:text-muted-foreground"
+                className="pl-12 h-14 bg-transparent border border-white/20 rounded-xl backdrop-blur-md text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
               />
             </div>
             <div className="flex-1 relative">
-              <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground z-10" />
               <Input
                 placeholder="Enter your location"
-                className="pl-12 h-14 bg-glass-bg border border-glass-border rounded-xl backdrop-blur-md text-foreground placeholder:text-muted-foreground"
+                className="pl-12 h-14 bg-transparent border border-white/20 rounded-xl backdrop-blur-md text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:bg-white/5 transition-all duration-300"
               />
             </div>
             <Button variant="premium" size="lg" className="h-14 px-10 rounded-xl font-bold text-base">
